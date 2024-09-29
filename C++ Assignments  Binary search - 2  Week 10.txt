@@ -1,0 +1,155 @@
+1->
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int arr[] = {100, 85, 70, 50, 30, 10, 5};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int target = 70;
+    int lo = 0;
+    int hi = n-1;
+    while(lo <= hi){
+        int mid = lo + (hi - lo)/2;
+        if(arr[mid] == target){
+            cout<<arr[mid];
+            break;
+        }
+        else if(arr[mid] < target) hi = mid - 1;
+        else lo = mid + 1;
+    }
+
+    return 0;
+}
+
+2->
+
+	no idea sir i will see the solution
+3-> 
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int arr[3][4] = {{1,3,5,7},{10,11,16,20},{23,30,34,60}};
+    int n = 3;
+    int m = 4;
+    int target = 23;
+    bool flag = false;
+    for(int i = 0; i < n; i++){
+        int lo = 0;
+        int hi = m-1;
+        
+        while(lo <= hi){
+            int mid = lo + (hi - lo)/2;
+            if(target == arr[i][mid]){
+                flag = true;
+                cout<<"true";
+                break;
+            }
+            else if(arr[i][mid] > target) hi = mid - 1;
+            else lo = mid + 1;
+        }
+    }
+    if(!flag) cout<<"false";
+    
+    
+    
+}
+
+4->
+
+int n = arr.size();
+        std::vector<int> v;
+
+        if (x < arr[0]) {
+            for (int i = 0; i < k; i++) {
+                v.push_back(arr[i]);
+            }
+            return v;
+        }
+
+        if (x > arr[n - 1]) {
+            for (int i = n - k; i < n; i++) {
+                v.push_back(arr[i]);
+            }
+            return v;
+        }
+
+        int lo = 0;
+        int hi = n - 1;
+        int lb = -1;
+        int up = -1;
+        bool flag = false;
+
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (arr[mid] == x) {
+                flag = true;
+                lb = mid - 1;
+                up = mid + 1;
+                v.push_back(arr[mid]);
+                break;
+            } else if (arr[mid] > x) {
+                hi = mid - 1;
+            } else {
+                lo = mid + 1;
+            }
+        }
+
+        if (!flag) {
+            lb = hi;
+            up = lo;
+        }
+
+        while (v.size() < k) {
+            if (lb >= 0 && up < n) {
+                if (abs(arr[lb] - x) <= abs(arr[up] - x)) {
+                    v.push_back(arr[lb--]);
+                } else {
+                    v.push_back(arr[up++]);
+                }
+            } else if (lb >= 0) {
+                v.push_back(arr[lb--]);
+            } else if (up < n) {
+                v.push_back(arr[up++]);
+            }
+        }
+
+        std::sort(v.begin(), v.end());
+        return v;
+
+4->
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int arr[7] = {2,5,6,0,0,1,2};
+	int n = 7;
+	int target = 0;
+	int lo = 0;
+	int hi = n - 1;
+	int lb = -1;
+	int up = -1;
+	bool flag = false;
+
+	while (lo <= hi) {
+		int mid = lo + (hi - lo) / 2;
+		if (arr[mid] == target) {
+			flag = true;
+			cout<<"true";
+			break;
+		} else if (arr[mid] > target) {
+			hi = mid - 1;
+		} else {
+			lo = mid + 1;
+		}
+	}
+	if(!flag) cout<<"false";
+	return 0;
+}
